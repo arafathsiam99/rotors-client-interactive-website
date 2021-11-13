@@ -1,0 +1,13 @@
+.custom-btn-d {
+  background-color: rgb(0, 0, 0);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  font-size: 15px;
+}
+
+.custom-btn-d:hover {
+  background-color: orange;
+  transition: 0.5s;
+}

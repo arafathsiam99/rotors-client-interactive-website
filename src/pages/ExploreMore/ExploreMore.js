@@ -6,7 +6,7 @@ const ExploreMore = () => {
   const [allCars, setAllCars] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/allcars")
+    fetch("https://rocky-brushlands-20414.herokuapp.com/allcars")
       .then((res) => res.json())
       .then((data) => setAllCars(data));
   }, []);

@@ -3,44 +3,31 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import UseAuth from "../hooks/UseAuth";
 
-const Booking = () => {
-  const { user } = UseAuth();
+const AddReview = () => {
   const { id } = useParams();
-  const [item, setItem] = useState({});
-
+  const user = UseAuth();
+  const [review, setReview] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    data.packageName = item?.name;
-    data.packageImg = item?.img;
-    data.status = "Pending";
-    console.log(data);
-
-    fetch("https://rocky-brushlands-20414.herokuapp.com/placeorders", {
+    fetch("https://rocky-brushlands-20414.herokuapp.com/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result));
+    });
+    console.log(data);
   };
-
   useEffect(() => {
-    fetch(`https://rocky-brushlands-20414.herokuapp.com/placebooking/${id}`)
+    fetch(`https://rocky-brushlands-20414.herokuapp.com/placereview/${id}`)
       .then((res) => res.json())
-      .then((data) => setItem(data));
+      .then((data) => setReview(data));
   }, [id]);
-  console.log(item);
   return (
-    <div className="container">
-      <h2 className="custom-font">Book This Car</h2>
-      <h2>{item.name}</h2>
-      <img src={item.img} alt="" />
-      <p>{item.description}</p>
-
+    <div>
+      <h1 className="custom-font">Please Give Your Review Here</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           defaultValue={user.displayName}
@@ -49,6 +36,7 @@ const Booking = () => {
           placeholder="user Name"
         />
         <br />
+
         <input
           defaultValue={user.email}
           className="p-2 m-2"
@@ -56,27 +44,19 @@ const Booking = () => {
           {...register("email", { required: true })}
           placeholder="email"
         />
-        <br />
         <input
           className="p-2 m-2"
-          {...register("address")}
-          placeholder="Address"
+          {...register("review")}
+          placeholder="review"
         />
         <br />
-        <input
-          className="p-2 m-2"
-          type="Date"
-          {...register("Date", { required: true })}
-          placeholder="Date"
-        />
 
         {errors.exampleRequired && <span>This field is required</span>}
-        <br />
 
-        <input className="custom-btn" type="Submit" />
+        <input className="custom-btn" type="submit" />
       </form>
     </div>
   );
 };
 
-export default Booking;
+export default AddReview;

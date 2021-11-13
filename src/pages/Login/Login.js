@@ -13,7 +13,7 @@ const Login = () => {
   const history = useHistory();
   const redirect_uri = location.state?.from || "/home";
   const auth = getAuth();
-  const { user, googleSignIn, setUser } = UseFirebase();
+  const { googleSignIn } = UseFirebase();
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
@@ -63,11 +63,12 @@ const Login = () => {
         <p>
           Log In or
           <Link style={{ textDecoration: "none" }} to="/register">
-            <span className="cs-p">Create an Account?</span>
+            <span className="cs-p"> Create an Account?</span>
           </Link>
         </p>
         <form onSubmit={handleOnSubmit}>
           <input
+            className="p-2 mt-3"
             onChange={handleEmailChange}
             type="email"
             name="email"
@@ -75,17 +76,18 @@ const Login = () => {
           />
           <br />
           <input
+            className="p-2 mt-3"
             onChange={handlePasswordChange}
             name="password"
             type="password"
             placeholder="Enter your Password"
           />
           <br />
-          <input type="submit" value="Login" />
+          <input className=" mt-3" type="submit" value="Login" />
+          <p>Or</p>
+          <button onClick={handleGoogleSignIn}>Google Login</button>
         </form>
       </div>
-      <p>Or</p>
-      <button onClick={handleGoogleSignIn}>Google Sign In</button>
     </div>
   );
 };

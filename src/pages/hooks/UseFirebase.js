@@ -11,6 +11,7 @@ import {
 
 initializeAuthentication();
 const UseFirebase = () => {
+  const [admin, setAdmin] = useState(false);
   const [name, setName] = useState("");
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +21,7 @@ const UseFirebase = () => {
 
   const googleSignIn = () => {
     setIsLoading(true);
+    saveGoogleLoginUser(user.email, user.displayName);
     return signInWithPopup(auth, googleProvider)
       .finally(() => setIsLoading(false))
 
@@ -52,9 +54,25 @@ const UseFirebase = () => {
       .then(() => {})
       .finally(() => setIsLoading(false));
   };
+  const saveGoogleLoginUser = (email, displayName) => {
+    const user = { email, displayName };
+    fetch("https://rocky-brushlands-20414.herokuapp.com/users", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(user),
+    }).then();
+  };
+
+  useEffect(() => {
+    fetch(`https://rocky-brushlands-20414.herokuapp.com/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
+
   return {
     user,
     googleSignIn,
+    admin,
     isLoading,
     setUser,
     setName,

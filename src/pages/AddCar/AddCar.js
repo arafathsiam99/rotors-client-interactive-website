@@ -8,7 +8,7 @@ const AddCar = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`http://localhost:8000/addcar`, {
+    fetch(`https://rocky-brushlands-20414.herokuapp.com/addcar`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

@@ -5,16 +5,16 @@ const ManageAllBooking = () => {
   const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/allbooking")
+    fetch("https://rocky-brushlands-20414.herokuapp.com/allbooking")
       .then((res) => res.json())
       .then((data) => setAllBooking(data));
   }, [isDeleted]);
 
   const handleDeletePackage = (id) => {
-    const confirm = window.confirm("Are you want to delete this package?");
+    const confirm = window.confirm("Are you want to delete this car?");
     console.log(id);
     if (confirm) {
-      fetch(`http://localhost:8000/deleteOrders/${id}`, {
+      fetch(`https://rocky-brushlands-20414.herokuapp.com/deleteOrders/${id}`, {
         method: "DELETE",
         headers: { "content-type": "application/json" },
       })
@@ -30,7 +30,7 @@ const ManageAllBooking = () => {
   };
 
   const handleConfirm = (id) => {
-    fetch(`http://localhost:8000/confirmOrders/${id}`, {
+    fetch(`https://rocky-brushlands-20414.herokuapp.com/confirmOrders/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
     })
@@ -60,14 +60,14 @@ const ManageAllBooking = () => {
                 onClick={() => handleConfirm(single._id)}
                 className="btn btn-sm btn-success"
               >
-                Confirm
+                Shipped
               </button>
             </span>
             <button
               onClick={() => handleDeletePackage(single._id)}
               className="custom-btn"
             >
-              Cancel
+              Delete
               <i className="far fa-trash-alt ms-2"></i>
             </button>
           </div>

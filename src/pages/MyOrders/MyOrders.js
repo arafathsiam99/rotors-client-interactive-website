@@ -10,7 +10,7 @@ const MyOrders = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`http://localhost:8000/booking/${user?.email}`)
+    fetch(`https://rocky-brushlands-20414.herokuapp.com/booking/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCars(data);
@@ -21,10 +21,10 @@ const MyOrders = () => {
 
   const handleDelete = (id) => {
     console.log(id);
-    const confirm = window.confirm("Are you want to delete this package?");
+    const confirm = window.confirm("Are you want to delete this booking?");
 
     if (confirm) {
-      fetch(`http://localhost:8000/deleteOrders/${id}`, {
+      fetch(`https://rocky-brushlands-20414.herokuapp.com/deleteOrders/${id}`, {
         method: "DELETE",
         headers: { "content-type": "application/json" },
       })

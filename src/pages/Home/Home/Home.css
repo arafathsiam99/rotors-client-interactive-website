@@ -1,0 +1,19 @@
+.custom-top {
+  color: red;
+  font-size: 30px;
+}
+.custom-btn {
+  background-color: rgb(255, 0, 0);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  font-size: 15px;
+}
+.custom-btn:hover {
+  background-color: rgb(3, 4, 78);
+  transition: 0.5s;
+}
+.custom-font {
+  color: blue;
+}

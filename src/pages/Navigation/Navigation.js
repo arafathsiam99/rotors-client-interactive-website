@@ -21,9 +21,24 @@ const Navigation = () => {
               <NavLink className="custom-link" to="/home">
                 Home
               </NavLink>
-              <NavLink className="custom-link" to="/addcar">
-                Add Car
+              <NavLink className="custom-link" to="/dashboard">
+                Dashboard
               </NavLink>
+              {user?.email && (
+                <NavLink className="custom-link" to="/addcar">
+                  Add Car
+                </NavLink>
+              )}
+              {user?.email && (
+                <NavLink className="custom-link" to="/myorders">
+                  My Orders
+                </NavLink>
+              )}
+              {user?.email && (
+                <NavLink className="custom-link" to="/manageallbooking">
+                  Manage All Booking
+                </NavLink>
+              )}
               <NavLink className="custom-link" to="/exploremore">
                 Explore More
               </NavLink>

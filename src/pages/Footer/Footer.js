@@ -3,8 +3,8 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <section className="mt-5 container">
-      <div className="row custom-bg ">
+    <section className="mt-5">
+      <div className="row custom-bg">
         <div className="col-md-4">
           <img src="https://i.ibb.co/0J7nC15/logo-02-1x.png" alt="" />
           <p className="custom-para">
@@ -27,70 +27,60 @@ const Footer = () => {
             Lane,Warrington,WA4
           </p>
           <p>
-            <i class="fas fa-clock"></i>
+            <i className="fas fa-clock"></i>
             8.00 am-9.30pm
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             Other Office Locations
           </p>
           <p>
-            <i class="fas fa-envelope"></i>
+            <i className="fas fa-envelope"></i>
             rotorseml@eml.fr
           </p>
           <p>
-            <i class="fas fa-phone"></i>
+            <i className="fas fa-phone"></i>
             01987548754857
           </p>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 ">
           <h2>Information</h2>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             Find a car for rent in the nearest location
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             Cars catalogue
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             FAQ
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             About Us
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             Contacts
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             Help Center
           </p>
           <p>
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
             Privacy Policy
           </p>
         </div>
       </div>
-      <div className="row custom-bg1">
-        <div className="col-md-6">
-          Copyright
-          <span>
-            <i className="far fa-copyright"></i>
-          </span>
-          2021.Rotors By Arafath Islam Siam
-        </div>
-        <div className="col-md-6">
-          <div className="ms-5">
-            <i className="fab fa-facebook "></i>
-            <i className="fab fa-twitter "></i>
-            <i className="fab fa-instagram "></i>
-            <i className="fab fa-pinterest "></i>
-          </div>
-        </div>
+      <div className="custom-bg1">
+        Copyright
+        <span>
+          <i className="far fa-copyright"></i>
+        </span>
+        2021.Rotors By Arafath Islam Siam
       </div>
     </section>
   );
