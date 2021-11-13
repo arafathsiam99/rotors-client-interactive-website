@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
 import UseAuth from "../hooks/UseAuth";
 
 const AddReview = () => {
-  const { id } = useParams();
   const user = UseAuth();
-  const [review, setReview] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch("https://rocky-brushlands-20414.herokuapp.com/reviews", {
+    fetch("http://localhost:8000/review", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     });
     console.log(data);
   };
-  useEffect(() => {
-    fetch(`https://rocky-brushlands-20414.herokuapp.com/placereview/${id}`)
-      .then((res) => res.json())
-      .then((data) => setReview(data));
-  }, [id]);
   return (
     <div>
       <h1 className="custom-font">Please Give Your Review Here</h1>
@@ -36,18 +28,21 @@ const AddReview = () => {
           placeholder="user Name"
         />
         <br />
-
-        <input
-          defaultValue={user.email}
-          className="p-2 m-2"
-          type="email"
-          {...register("email", { required: true })}
-          placeholder="email"
-        />
         <input
           className="p-2 m-2"
           {...register("review")}
           placeholder="review"
+        />
+        <br />
+        <input
+          min="0"
+          max="5"
+          step="any"
+          className="p-2 m-2"
+          type="number"
+          defaultValue="0"
+          {...register("rating")}
+          placeholder="rating"
         />
         <br />
 

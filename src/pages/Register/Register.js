@@ -42,7 +42,6 @@ const Register = () => {
           .catch((error) => {});
       })
       .catch((error) => setError(error.message));
-    updateName();
     history.replace("/");
   };
   const handleNameChange = (e) => {

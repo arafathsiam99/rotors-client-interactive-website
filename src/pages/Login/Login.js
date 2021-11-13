@@ -83,7 +83,11 @@ const Login = () => {
             placeholder="Enter your Password"
           />
           <br />
-          <input className=" mt-3" type="submit" value="Login" />
+          <input
+            className=" mt-3 btn btn-sm btn-outline-success"
+            type="submit"
+            value="Login"
+          />
           <p>Or</p>
           <button onClick={handleGoogleSignIn}>Google Login</button>
         </form>

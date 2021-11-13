@@ -21,22 +21,9 @@ const Navigation = () => {
               <NavLink className="custom-link" to="/home">
                 Home
               </NavLink>
-              <NavLink className="custom-link" to="/dashboard">
-                Dashboard
-              </NavLink>
               {user?.email && (
-                <NavLink className="custom-link" to="/addcar">
-                  Add Car
-                </NavLink>
-              )}
-              {user?.email && (
-                <NavLink className="custom-link" to="/myorders">
-                  My Orders
-                </NavLink>
-              )}
-              {user?.email && (
-                <NavLink className="custom-link" to="/manageallbooking">
-                  Manage All Booking
+                <NavLink className="custom-link" to="/dashboard">
+                  Dashboard
                 </NavLink>
               )}
               <NavLink className="custom-link" to="/exploremore">
@@ -47,9 +34,14 @@ const Navigation = () => {
                   Login
                 </NavLink>
               ) : (
-                <button onClick={handleLogOut}>Logout</button>
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={handleLogOut}
+                >
+                  Logout
+                </button>
               )}
-              <Navbar.Text>{user.displayName}</Navbar.Text>
+              {user.email && <Navbar.Text>{user.email}</Navbar.Text>}
             </Nav>
           </Navbar.Collapse>
         </Container>

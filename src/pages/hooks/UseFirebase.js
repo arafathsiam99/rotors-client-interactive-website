@@ -21,21 +21,12 @@ const UseFirebase = () => {
 
   const googleSignIn = () => {
     setIsLoading(true);
-    saveGoogleLoginUser(user.email, user.displayName);
     return signInWithPopup(auth, googleProvider)
       .finally(() => setIsLoading(false))
 
       .catch((error) => {
         console.log(error.message);
       });
-  };
-
-  const updateName = () => {
-    updateProfile(auth.currentUser, {
-      displayName: name,
-    })
-      .then(() => {})
-      .catch((error) => {});
   };
 
   useEffect(() => {
@@ -56,7 +47,7 @@ const UseFirebase = () => {
   };
   const saveGoogleLoginUser = (email, displayName) => {
     const user = { email, displayName };
-    fetch("https://rocky-brushlands-20414.herokuapp.com/users", {
+    fetch("http://localhost:8000/users", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
@@ -64,7 +55,7 @@ const UseFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`https://rocky-brushlands-20414.herokuapp.com/users/${user.email}`)
+    fetch(`http://localhost:8000/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -76,7 +67,6 @@ const UseFirebase = () => {
     isLoading,
     setUser,
     setName,
-    updateName,
     logOut,
   };
 };
