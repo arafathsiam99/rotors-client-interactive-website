@@ -6,13 +6,12 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
-  updateProfile,
 } from "firebase/auth";
 
 initializeAuthentication();
 const UseFirebase = () => {
   const [admin, setAdmin] = useState(false);
-  const [name, setName] = useState("");
+  const [setName] = useState("");
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,7 +46,7 @@ const UseFirebase = () => {
   };
   const saveGoogleLoginUser = (email, displayName) => {
     const user = { email, displayName };
-    fetch("http://localhost:8000/users", {
+    fetch("https://rocky-brushlands-20414.herokuapp.com/", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
@@ -55,7 +54,7 @@ const UseFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/users/${user.email}`)
+    fetch(`https://rocky-brushlands-20414.herokuapp.com/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
